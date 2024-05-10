@@ -44,7 +44,6 @@ print("Host with the highest total of prices and their location:")
 print(host_highest_total_prices)
 
 # When did Danielle from Queens last receive a review?
-# Convert 'last_review' column to datetime data type
 air_bnb['last_review'] = pd.to_datetime(air_bnb['last_review'])
 
 danielle_reviews_queens = air_bnb[(air_bnb['host_name'] == 'Danielle') & (air_bnb['neighbourhood_group'] == 'Queens')]
@@ -62,6 +61,5 @@ print(f"Host with the most listings: {most_listings_host}")
 open_avail_listings = air_bnb[air_bnb['availability_365'] == 365].shape[0]
 print(f"Number of listings with completely open availability: {open_avail_listings}")
 
-# What room types have the highest review numbers?
 room_types_highest_reviews = air_bnb.groupby('room_type')['number_of_reviews'].sum().idxmax()
 print(f"Room types with the highest review numbers: {room_types_highest_reviews}")
