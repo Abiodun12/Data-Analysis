@@ -1,0 +1,193 @@
+## Functions and Conditionals
+
+### Conditionals
+
+The basic syntax for an if statement goes like this:
+
+```{r}
+if (logical statement) {
+  do something
+} else {
+  do something else
+}
+```
+
+The logical statements should boil down to a boolean; for example:
+
+```{r}
+
+```
+
+We can also add else if statements in the middle if we need more options.
+
+```{r}
+
+```
+
+Neat! We can also nest conditionals just like we do in Python.
+
+```{r}
+
+    
+```
+
+Neat! Now, let's look at another core part of R programming - Loops!
+
+### Loops
+
+```{r}
+
+```
+
+We can also do nifty stuff with our vectors, such as apply changes to specific indices of our data.
+
+```{r}
+
+```
+
+We can loop over more than just lists:
+
+```{r}
+
+```
+
+Like Python, we have while loops in R:
+
+```{r}
+
+```
+
+## Functions
+
+When should we use functions?
+
+```{r}
+our_function <- function(optional_params){
+  # do some stuff
+}
+```
+
+An example:
+
+```{r}
+
+```
+
+This is all cool.. but it didn't do anything. We need to call the function!
+
+```{r}
+
+```
+
+Notice that in the background here, we are looping over each item in the array, but we never write a for loop! Keep this in mind, since when you pass in a large data set, the changes made by functions aren't quite immediate - the computer does have to go over each item in your data set, and change them one at a time.
+
+A shortcut of sorts is to use the `apply()` function, which operates very similarly to Python's `map()`. Note that `apply` syntax goes as follows: `apply(X, MARGIN, FUN)` where X is the data set to use, MARGIN is specification for rows or columns, and FUN is the function to apply.
+
+```{r}
+
+```
+
+It is common to use `mean`, `median`, `sum`, `min`, or `max` with `apply`, but we can also use our user-defined functions as well. Note that apply() only works with matrices.
+
+```{r}
+
+```
+
+### Homework
+
+1.  Do 5 CodeWars problems in R. Share your solutions here:
+
+    ```{r}
+et_chance <- function(n, x, a) {
+  total_outcomes <- choose(n, a)
+
+  favorable_outcomes <- choose(n - x, a)
+
+  P <- favorable_outcomes / total_outcomes
+
+  P <- round(P, 2)
+
+  return(P)
+}
+    array_diff <- function(a, b) {
+  # Select the elements of 'a' that are not in 'b'
+  result <- a[!a %in% b]
+  
+  return(result)
+}
+disemvowel <- function(string) {
+  result <- gsub(pattern = "[aeiouAEIOU]", replacement = "", x = string)
+  
+  return(result)
+}
+row_sum_odd_numbers <- function(n) {
+  result <- n^3
+  
+  return(result)
+}
+nbDig <- function(n, d) {
+  # Initialize the count to 0
+  count <- 0
+  
+  # Loop over each number from 0 to 'n'
+  for (k in 0:n) {
+    # Square the number
+    square <- k^2
+    
+    # Convert the squared number to a string
+    square_string <- as.character(square)
+    
+    # Count the occurrences of the digit 'd' in the string
+    count <- count + stringr::str_count(square_string, pattern = as.character(d))
+  }
+  
+  return(count)
+}
+
+
+    ```
+
+2.  Create a function that checks an input of type `int` and returns fizz if the number is a multiple of 3, buzz if the number is a multiple of 5, and fizzbuzz if the number is a multiple of 3 and 5.
+
+    ```{r}
+fizzbuzz <- function(num) {
+  if (num %% 3 == 0 & num %% 5 == 0) {
+    return("fizzbuzz")
+  } else if (num %% 3 == 0) {
+    return("fizz")
+  } else if (num %% 5 == 0) {
+    return("buzz")
+  } else {
+    return(num)
+  }
+}
+
+result <- fizzbuzz(15)
+print(result) 
+
+    ```
+
+3.  **Mario Challenge:** In the classic Super Mario games, Mario ends each level by ascending a flight of stairs and leaping off the top to arrive at the castle at the end. (See [here](https://youtu.be/-avspZlbOWU?t=55) for details). We can imagine that each of the bricks of the stairs is a character X. Create a function that prints out a set of stairs. For example:
+
+    If the function is called marioStairs() and we pass in the value 4, we would expect to see stairs with a length of 4 and a height of 4:
+
+    X
+
+    XX
+
+    XXX
+
+    XXXX
+
+    ```{r}
+    # You may feel more comfortable figuring this out in Python first, then translating into R later.
+    marioStairs <- function(n) {
+  for (i in 1:n) {
+    cat(rep("X", i), "\n")
+  }
+}
+
+# Example usage:
+marioStairs(4)
+
+    ```
