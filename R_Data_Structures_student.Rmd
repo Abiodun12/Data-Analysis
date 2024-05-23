@@ -1,0 +1,153 @@
+title: "R Notebook"
+output: html_notebook
+---
+
+# R: Data Structures
+
+## Vectors
+
+
+```{r}
+# Create a vector
+my_vector <- c(1, 2, 3, 4, 5)
+print(my_vector)
+
+# Get the type of the vector
+print(typeof(my_vector))
+
+Getting a Vector’s Length
+You can get the length of a vector using the length() function
+
+# Get the length of the vector
+print(length(my_vector))
+
+
+
+
+# Note this returns "John", the first element in our Vector
+print(my_vector[1])
+
+# Generate a sequence from 5 to 15
+seq1 <- 5:15
+print(seq1)
+
+# Generate a sequence with decimals
+seq2 <- seq(1, 2, by = 0.1)
+print(seq2)
+
+
+# Step from 5 to 15 by increments of .3
+seq3 <- seq(5, 15, by = 0.3)
+print(seq3)
+
+
+```
+
+### Calculations between two matrices
+
+# Get the element in the 2nd row and 4th column
+print(my_matrix[2, 4])
+
+You can also get entire rows and columns.
+
+# Get the second row
+print(my_matrix[2, ])
+
+# Get the third column
+print(my_matrix[, 3])
+
+Calculations between two matrices
+# Create two matrices
+matrix1 <- matrix(1:9, nrow = 3, ncol = 3)
+matrix2 <- matrix(10:18, nrow = 3, ncol = 3)
+
+Addition
+# Add the matrices
+result_add <- matrix1 + matrix2
+print(result_add)
+
+Subtraction
+# Subtract the matrices
+result_sub <- matrix1 - matrix2
+print(result_sub)
+
+Multiplication
+# Multiply the matrices
+result_mul <- matrix1 * matrix2
+print(result_mul)
+
+Division
+# Divide the matrices
+result_div <- matrix1 / matrix2
+print(result_div)
+## Arrays
+
+Arrays can store data in more than two dimensions.They are n-dimensional. If we create an array with the dimensions of (5,6,6), it will create 6 matrices with 5 rows and 6 columns. Arrays are created with the `array ()` function. The first argument is the vector of data to display, the second is the desired dimensions for your array.
+
+```{r}
+
+```
+
+### Naming Array columns and rows
+
+You can name columns, rows, and matrices using the optional dimnames parameter
+
+```{r}
+# Name the columns, rows, and matrices
+dimnames(my_array) <- list(c("Row1", "Row2", "Row3"), c("Col1", "Col2", "Col3"), c("Matrix1", "Matrix2"))
+print(my_array)
+
+```
+
+### Accessing Array Elements
+
+# Get the element in the second row, third column, first matrix
+print(my_array[2, 3, 1])
+
+# Get the second row of all of the matrices
+print(my_array[2, , ])
+
+# Get the second column of all of the matrices
+print(my_array[, 2, ])
+
+# Get the second matrix
+print(my_array[, , 2])
+
+```
+
+# A factor of eye colors
+eye_colors <- factor(c("Blue", "Green", "Blue", "Brown", "Green", "Brown", "Blue"))
+print(eye_colors)
+
+You can also use the optional levels parameter to specify the order in which the levels should be displayed.
+
+# Specify the order of the levels
+eye_colors <- factor(eye_colors, levels = c("Blue", "Green", "Brown"))
+print(eye_colors)
+```
+
+## Homework
+
+1.  Create an array of two 3x3 matrices from the given vectors.
+
+```{r}
+homework_array <- array(1:18, dim = c(3, 3, 2))
+print(homework_array)
+
+```
+
+2.  In the above matrix that you created, print the value 5 by indexing in to the matrix.
+# Print the value 5
+print(homework_array[2, 2, 1])
+
+3.  Print the third row of the first matrix.
+# Print the third row of the first matrix
+print(homework_array[3, , 1])
+
+4.  Print the second column of both matrices.
+
+    ```{r}
+# Print the second column of both matrices
+print(homework_array[, 2, ])
+
+    ```
